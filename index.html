@@ -31,6 +31,42 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
+
+        /* Review Marquee Animation Styles */
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            gap: 1.5rem;
+        }
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            gap: 1.5rem;
+            animation: scroll-left 50s linear infinite;
+        }
+        .marquee-content-reverse {
+            display: flex;
+            flex-shrink: 0;
+            gap: 1.5rem;
+            animation: scroll-right 60s linear infinite;
+        }
+        .marquee-container:hover .marquee-content,
+        .marquee-container:hover .marquee-content-reverse {
+            animation-play-state: paused;
+        }
+        @keyframes scroll-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-100% - 1.5rem)); }
+        }
+        @keyframes scroll-right {
+            from { transform: translateX(calc(-100% - 1.5rem)); }
+            to { transform: translateX(0); }
+        }
+        .review-card {
+            width: 380px;
+            white-space: normal;
+        }
     </style>
     
     <!-- Facebook Pixel Code -->
@@ -46,7 +82,7 @@
         
         fbq('init', 'YOUR_PIXEL_ID'); // এখানে আপনার পিক্সেল আইডি বসান
         
-        // 1. PageView ও ViewContent ট্র্যাকিং (পেজ লোড হওয়ার সাথে সাথে)
+        // 1. PageView ও ViewContent ট্র্যাকিং (পেজ লোড হওয়ার সাথে সাথে)
         fbq('track', 'PageView');
         fbq('track', 'ViewContent', {
             content_name: 'Tasnim Hair Care Landing Page',
@@ -85,7 +121,7 @@
                     <span class="gradient-text">প্রাকৃতিক উপায়ে</span>
                 </h1>
                 <p class="text-lg text-gray-600 mt-6 max-w-lg leading-relaxed">
-                    তাসনিম হেয়ার কেয়ার-এর শুদ্ধ তেল এবং হেয়ার প্যাক আপনার চুলকে করে তুলবে আরও ঘন, লম্বা ও উজ্জ্বল। কোনো প্রকার কেমিক্যাল ছাড়াই একদম বিশুদ্ধ সমাধান।
+                    তাসনিম হেয়ার কেয়ার-এর শুদ্ধ তেল এবং হেয়ার প্যাক আপনার চুলকে করে তুলবে আরও ঘন, লম্বা ও উজ্জ্বল। কোনো প্রকার কেমিক্যাল ছাড়াই একদম বিশুদ্ধ সমাধান।
                 </p>
                 <div class="mt-10 flex flex-wrap justify-center md:justify-start gap-4">
                     <a href="#order" class="bg-green-700 text-white px-10 py-4 rounded-2xl text-xl font-bold shadow-xl shadow-green-100 hover:bg-green-800 transition duration-300">
@@ -180,6 +216,487 @@
         </div>
     </section>
 
+    <!-- Customer Reviews Animation Section -->
+    <section class="py-20 bg-green-50/50 overflow-hidden border-y border-green-100">
+        <div class="container mx-auto px-4 mb-12">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">সম্মানিত গ্রাহকদের <span class="text-green-700">মতামত</span></h2>
+                <p class="text-gray-500 mt-4 text-lg">আপনাদের ভালোবাসাই আমাদের এগিয়ে চলার অনুপ্রেরণা</p>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <!-- Row 1 (Scrolls Left) -->
+            <div class="marquee-container">
+                <!-- Group 1 -->
+                <div class="marquee-content">
+                    <!-- Review 1 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আলহামদুলিল্লাহ আমি নিছি অনেক ভালো, আমি উপকার পাইছি আবার নিবো, আমরা দুইবোন আপনার প্রোডাক্ট ব্যবহার করি মাশাল্লাহ মাশাল্লাহ আপনার কম্ব টা এক কথা মেজিক মতন কাজ করে"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Sijan Ahmed</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আলহামদুলিল্লাহ আমি দ্বিতীয় বারের মতো আবার কালকে অর্ডার করেছি আমি সহ আমার পুরো পরিবারের খুব পছন্দের একটা তেল অনেক উপকৃত হয়েছি ধন্যবাদ আপু প্রোডাক্টটা হাতে পেয়ে অবশ্যই একটা ছবি দিব❤️"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">মে</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">মেঘলা আকাশ</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 3 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আলহামদুলিল্লাহ আলহামদুলিল্লাহ, আপু আপনার এই তেল টা আমি একটা এখন ও শেষ করি নাই, কিন্তু অনেক কাজ হইছে, আমার চুল আগে থেকে অনেক সুন্দর হইছে, আমার চুল দেখে অনেকে নিছে, আমি আজ ও একটা অর্ডার করছি,"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">S Sorna</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 4 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Hair care ar jonno best akta combo tasnim hair oil ami onnkdin jabot use korteci alhamdulillah khub vlo result paici in sha allah abr order korbo 😊💝"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Sumaiya Sumi</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 5 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Aibar niya 5 bar hobe apnader hair oil neoa amar dekha dekhi amar ammu, fuppi sobai ai oil use kore Alhamdulillah sobai onek balo result peyeche onek valo hair oil ta Apnar opor amr age thekei trust chilo j apnar oil valo hobe apnar vdo age thekei dekhtam Trustable akta page apnar chokh bujhe trust kora jay By the way apnake khub sundor lagche (Every vdo tey lage) And apnar kotha gula khub e sundor doa kori life a egiye jan r amader jonno onek onek Oil make koren 💖"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">J</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Jãññâtúl Jóhä</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 6 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আপু আপনার পেজ থেকে তেল অর্ডার করে আমি সত্যিই খুব খুশি। তেলের গুণমান অনেক ভালো। ব্যবহারের পর থেকে চুল অনেক সফট আর সিল্কি হয়ে গেছে চুল পড়াও অনেক কমেছে। এত ভালো সার্ভিস আর পণ্যের জন্য আপনাদের অনেক অনেক ধন্যবাদ।"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">Z</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Zarin Zara</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 7 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আমি একটা নিছিলাম অনেক ভালো আমার চুল অনেক সুন্দর হয়ছে"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">L</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">LA MI Ya</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 8 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আপু তোমার ওয়েল আর হেয়ার প্যাকটা দেওয়ার পর আমার চুল পড়া অনেকটা কমে গিয়েছে🥰 আর চুল গুলো অন্যরকম সাইন করছে😍 সত্যি আপু তোমাদের তেল আর হেয়ার প্যাক অনেক ভালো কাজ করে"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">R</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Rumky Islam</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 1 (Duplicate for infinite scroll) -->
+                <div class="marquee-content">
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আলহামদুলিল্লাহ আমি নিছি অনেক ভালো, আমি উপকার পাইছি আবার নিবো, আমরা দুইবোন আপনার প্রোডাক্ট ব্যবহার করি মাশাল্লাহ মাশাল্লাহ আপনার কম্ব টা এক কথা মেজিক মতন কাজ করে"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Sijan Ahmed</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আলহামদুলিল্লাহ আমি দ্বিতীয় বারের মতো আবার কালকে অর্ডার করেছি আমি সহ আমার পুরো পরিবারের খুব পছন্দের একটা তেল অনেক উপকৃত হয়েছি ধন্যবাদ আপু প্রোডাক্টটা হাতে পেয়ে অবশ্যই একটা ছবি দিব❤️"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">মে</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">মেঘলা আকাশ</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আলহামদুলিল্লাহ আলহামদুলিল্লাহ, আপু আপনার এই তেল টা আমি একটা এখন ও শেষ করি নাই, কিন্তু অনেক কাজ হইছে, আমার চুল আগে থেকে অনেক সুন্দর হইছে, আমার চুল দেখে অনেকে নিছে, আমি আজ ও একটা অর্ডার করছি,"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">S Sorna</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Hair care ar jonno best akta combo tasnim hair oil ami onnkdin jabot use korteci alhamdulillah khub vlo result paici in sha allah abr order korbo 😊💝"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Sumaiya Sumi</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Aibar niya 5 bar hobe apnader hair oil neoa amar dekha dekhi amar ammu, fuppi sobai ai oil use kore Alhamdulillah sobai onek balo result peyeche onek valo hair oil ta Apnar opor amr age thekei trust chilo j apnar oil valo hobe apnar vdo age thekei dekhtam Trustable akta page apnar chokh bujhe trust kora jay By the way apnake khub sundor lagche (Every vdo tey lage) And apnar kotha gula khub e sundor doa kori life a egiye jan r amader jonno onek onek Oil make koren 💖"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">J</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Jãññâtúl Jóhä</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আপু আপনার পেজ থেকে তেল অর্ডার করে আমি সত্যিই খুব খুশি। তেলের গুণমান অনেক ভালো। ব্যবহারের পর থেকে চুল অনেক সফট আর সিল্কি হয়ে গেছে চুল পড়াও অনেক কমেছে। এত ভালো সার্ভিস আর পণ্যের জন্য আপনাদের অনেক অনেক ধন্যবাদ।"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">Z</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Zarin Zara</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আমি একটা নিছিলাম অনেক ভালো আমার চুল অনেক সুন্দর হয়ছে"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">L</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">LA MI Ya</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আপু তোমার ওয়েল আর হেয়ার প্যাকটা দেওয়ার পর আমার চুল পড়া অনেকটা কমে গিয়েছে🥰 আর চুল গুলো অন্যরকম সাইন করছে😍 সত্যি আপু তোমাদের তেল আর হেয়ার প্যাক অনেক ভালো কাজ করে"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">R</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Rumky Islam</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 (Scrolls Right) -->
+            <div class="marquee-container">
+                <!-- Group 2 -->
+                <div class="marquee-content-reverse">
+                    <!-- Review 9 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Alhamdulillah apu.... Tmr thake product niye onk upokar peyechi alhamdulillah ❤️ Age chul porto akhon onk ta komche apu..... Onk valo upokar paichi alhamdulillah Tmr jnno onk onk dowa and valobasha apu ❤️❤️"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">SabiNa Islam</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 10 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Assalamualikum.. Alhamdulillah Alhamdulillah Alhamdulillah.. Ek kothay Tasnim Akter Amily apur tel jadur moto kaj kore... Ami nijeo bebohar kortechi.. Sesh hole in sha Allah abar o nibo... Amr chele howar pore amr cul utha soro hoy.... Sobai bolto baccara hasa suru korle cul pore jay... Amr seler jakhon 3 month takhon cheleke niye hospital e 7 din vorti chilam... 7 dine amr matha theke cul nai hoye giyechilo... Pore apur theke tel nichi ekhn Alhamdulillah tak matha culwala matha hocche ❤️❤️"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">M</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Mahfuja Atik</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 11 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আমার মেয়ের চুলের জন্য নিয়েছিলাম মাশাআল্লাহ এত উপকার হয়েছে যে আমি বারবার অর্ডার করবো এই তেলটা আমার হাসবেন্ড এত পছন্দ করেছে সেও বলতেছে আমাকে একটা এনে দাও ধন্যবাদ আপু এবং ভাইয়া দুজনই কিন্তু অনেক পরিশ্রম করেন এই তেলটা আমাদের মাঝে দেয়ার জন্য।"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">আ</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">আদ্দীপ রাফিয়া ব্লগ</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 12 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"অনলাইনে অনেক বিজ্ঞাপন দেখি কিন্তু তাসনিম হেয়ার অয়েল হাতে পাওয়ার পরে আমার ধারণা বদলে গিয়েছে প্রথমে তেলটির প্যাকেটের প্যাকেজিং টা দেখলে বোঝা যায় কতটি উন্নত মানের তেল এবং আর বোঝা যায় আপু কতটা যত্নশীল তেল তৈরি করার ক্ষেত্রে... খুবই স্যাটিসফাই প্রোডাক্ট হাতে পেয়ে। আমাদের ব্যবহার করা দেখে রিলেটিভরা বলছে এটি একটি জাদুকর প্রোডাক্ট। সত্যিই তেলটির গুনাগত মান এবং হেয়ার প্যাকটির গুণাগুণমান অসাধারণ"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Shaheen</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 13 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Bissas kro apu ami hair rebounding kre onk boro bipode prsi vabtam jdi khivabe hair repair krbo allah name niye ami tmr theke tel pack nei ma sha allah ato vlo blar bahire amr hair o vlo result paisi roja romjan mas mon theke dua kri tmr jnne... jara apu Theke products naw nai akber hole o niye dhekba in sha allah vlo result paba💖"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">U</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Umme Habiba</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 14 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Apu apner oil ta akdom joss amer chul pora onek komca chul gula ager thake o onek boro hoica amer Boro chul onek posondo tumake o onek valo lage amke akta grift diyo 🥺 ami akhono kiso grift pay nai 🥺"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Sheikh Aysha</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 15 -->
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আমরা কথায় না কাজে বিশ্বাস করি বিশ্বাস করেন আপু আপনাদের এই তেল যে ব্যবহার করবে তারাই আপনাদের এই তেলের প্রেমে পড়ে যাবে আমরা আশা করব সব সময় যেন এই সততা নিয়ে সামনে এগিয়ে যেতে পারেন আর আমাদের মত হতাশাগ্রস্ত মানুষদের একটু স্বস্তি পাই 🥰"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">মে</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">মেঘলা আকাশ</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 2 (Duplicate for infinite scroll) -->
+                <div class="marquee-content-reverse">
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Alhamdulillah apu.... Tmr thake product niye onk upokar peyechi alhamdulillah ❤️ Age chul porto akhon onk ta komche apu..... Onk valo upokar paichi alhamdulillah Tmr jnno onk onk dowa and valobasha apu ❤️❤️"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">SabiNa Islam</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"Assalamualikum.. Alhamdulillah Alhamdulillah Alhamdulillah.. Ek kothay Tasnim Akter Amily apur tel jadur moto kaj kore... Ami nijeo bebohar kortechi.. Sesh hole in sha Allah abar o nibo... Amr chele howar pore amr cul utha soro hoy.... Sobai bolto baccara hasa suru korle cul pore jay... Amr seler jakhon 3 month takhon cheleke niye hospital e 7 din vorti chilam... 7 dine amr matha theke cul nai hoye giyechilo... Pore apur theke tel nichi ekhn Alhamdulillah tak matha culwala matha hocche ❤️❤️"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">M</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Mahfuja Atik</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"আমার মেয়ের চুলের জন্য নিয়েছিলাম মাশাআল্লাহ এত উপকার হয়েছে যে আমি বারবার অর্ডার করবো এই তেলটা আমার হাসবেন্ড এত পছন্দ করেছে সেও বলতেছে আমাকে একটা এনে দাও ধন্যবাদ আপু এবং ভাইয়া দুজনই কিন্তু অনেক পরিশ্রম করেন এই তেলটা আমাদের মাঝে দেয়ার জন্য।"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">আ</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">আদ্দীপ রাফিয়া ব্লগ</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-6 rounded-2xl shadow-sm border border-green-100 flex flex-col justify-between hover:shadow-md transition">
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4 italic">"অনলাইনে অনেক বিজ্ঞাপন দেখি কিন্তু তাসনিম হেয়ার অয়েল হাতে পাওয়ার পরে আমার ধারণা বদলে গিয়েছে প্রথমে তেলটির প্যাকেটের প্যাকেজিং টা দেখলে বোঝা যায় কতটি উন্নত মানের তেল এবং আর বোঝা যায় আপু কতটা যত্নশীল তেল তৈরি করার ক্ষেত্রে... খুবই স্যাটিসফাই প্রোডাক্ট হাতে পেয়ে। আমাদের ব্যবহার করা দেখে রিলেটিভরা বলছে এটি একটি জাদুকর প্রোডাক্ট। সত্যিই তেলটির গুনাগত মান এবং হেয়ার প্যাকটির গুণাগুণমান অসাধারণ"</p>
+                        <div class="mt-auto border-t border-gray-50 pt-4 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold shrink-0">S</div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm truncate w-24">Shaheen</p>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f0f6ff] text-[#0866ff] border border-[#c9defa] px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                Facebook থেকে
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Order Form Section -->
     <section id="order" class="py-20 nature-bg">
         <div class="container mx-auto px-4 max-w-5xl">
@@ -187,7 +704,14 @@
                 <!-- Left: Package Selection -->
                 <div class="lg:w-[45%] bg-green-50 p-8 md:p-12">
                     <h2 class="text-3xl font-extrabold text-green-900 mb-2">অর্ডার করুন</h2>
-                    <p class="text-gray-500 mb-8">আপনার পছন্দের প্যাকেজটি সিলেক্ট করুন <span class="text-green-600 font-bold">(ডেলিভারি ফ্রি!)</span></p>
+                    
+                    <!-- হাইলাইটেড ডেলিভারি ফ্রি টেক্সট -->
+                    <div class="text-gray-500 mb-8 flex flex-col md:flex-row md:items-center gap-3 text-lg mt-2">
+                        আপনার পছন্দের প্যাকেজটি সিলেক্ট করুন
+                        <span class="bg-red-600 text-white px-5 py-2 rounded-full text-xl md:text-2xl font-black shadow-lg shadow-red-200 animate-bounce inline-block w-max mt-2 md:mt-0 border-2 border-white">
+                            🚚 ডেলিভারি ফ্রি!
+                        </span>
+                    </div>
 
                     <div class="space-y-4" id="package-selector">
                         <!-- Oil Option -->
@@ -246,16 +770,19 @@
                         </label>
                     </div>
 
-                    <div class="mt-8 space-y-3 pt-6 border-t border-green-200">
-                        <div class="flex justify-between text-gray-600">
+                    <div class="mt-8 space-y-4 pt-6 border-t border-green-200">
+                        <div class="flex justify-between text-gray-600 text-lg">
                             <span>সাব-টোটাল</span>
                             <span id="subtotal">৳১০০০</span>
                         </div>
-                        <div class="flex justify-between text-green-600 font-bold bg-green-50 p-2 rounded-lg">
-                            <span>ডেলিভারি চার্জ</span>
-                            <span>ফ্রি</span>
+                        
+                        <!-- হাইলাইটেড ডেলিভারি চার্জ সেকশন -->
+                        <div class="flex justify-between items-center text-green-800 font-bold bg-green-100 p-4 rounded-xl border-2 border-red-500 border-dashed relative">
+                            <span class="text-lg">ডেলিভারি চার্জ</span>
+                            <span class="text-2xl md:text-3xl font-black bg-red-600 text-white px-5 py-1.5 rounded-full shadow-lg animate-pulse transform hover:scale-110 transition">সম্পূর্ণ ফ্রি!</span>
                         </div>
-                        <div class="flex justify-between text-2xl font-extrabold text-green-900 pt-2 border-t border-dashed border-green-200">
+                        
+                        <div class="flex justify-between text-2xl font-extrabold text-green-900 pt-4 border-t border-dashed border-green-300">
                             <span>মোট মূল্য</span>
                             <span id="grand-total">৳১০০০</span>
                         </div>
@@ -301,6 +828,27 @@
             <p class="text-gray-600 mb-8 leading-relaxed">ধন্যবাদ তাসনিন হেয়ার কেয়ার-এর উপর ভরসা করার জন্য। আমাদের কাস্টমার প্রতিনিধি খুব শীঘ্রই আপনার সাথে ফোনে যোগাযোগ করবেন।</p>
             <button onclick="closePopup()" class="w-full bg-green-700 text-white py-4 rounded-2xl font-bold text-lg hover:bg-green-800 transition">ঠিক আছে</button>
         </div>
+    </div>
+
+    <!-- Fake Sales Notification Popup -->
+    <div id="sales-notification" class="fixed bottom-5 left-5 z-[150] bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] border border-green-100 p-3.5 flex items-center gap-4 transform translate-y-[200%] opacity-0 transition-all duration-500 ease-out max-w-xs w-full sm:max-w-sm pointer-events-none">
+        <img id="notify-img" src="IMG_3554.webp" class="w-14 h-14 rounded-xl object-cover border border-green-50 shrink-0 shadow-sm">
+        <div class="flex-1 min-w-0">
+            <p class="text-sm text-gray-700 leading-snug">
+                <span id="notify-name" class="font-extrabold text-gray-900">সাদিয়া</span> এইমাত্র অর্ডার করেছেন<br>
+                <span id="notify-product" class="text-green-700 font-bold text-sm">ফুল কম্বো প্যাক</span>
+            </p>
+            <p class="text-[11px] text-gray-500 mt-1 flex items-center gap-1.5 font-medium">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span id="notify-time">এইমাত্র</span> • <span id="notify-location">ঢাকা</span> থেকে
+            </p>
+        </div>
+        <button onclick="closeNotification()" class="text-gray-300 hover:text-gray-500 absolute top-2 right-2 pointer-events-auto p-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
     </div>
 
     <!-- Footer -->
@@ -392,7 +940,7 @@
     <script>
         const deliveryCharge = 0;
 
-        // ইংরেজি সংখ্যাকে বাংলায় কনভার্ট করার ফাংশন
+        // ইংরেজি সংখ্যাকে বাংলায় কনভার্ট করার ফাংশন
         const toBn = n => n.toString().replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
 
         // --- Facebook Pixel Advanced Tracking Events ---
@@ -522,6 +1070,70 @@
 
         // Initialize Price on Load
         window.onload = updatePrice;
+
+        // ==========================================
+        // FAKE SALES NOTIFICATION SYSTEM
+        // ==========================================
+        const fakeNames = ['সাদিয়া আক্তার', 'ফাতেমা বেগম', 'মেহেজাবিন', 'নুসরাত জাহান', 'সুমাইয়া', 'তানিয়া', 'রুমকি', 'বৃষ্টি', 'লামিয়া', 'আফসানা', 'জান্নাতুল ফেরদৌস', 'শারমিন', 'মিতু', 'রাইসা', 'সায়মা', 'তাজিন'];
+        
+        const fakeProducts = [
+            { name: 'ফুল কম্বো প্যাক', img: 'IMG_3554.webp' },
+            { name: 'তাসনিম হেয়ার অয়েল', img: 'IMG_3552.webp' },
+            { name: 'তাসনিম হেয়ার প্যাক', img: 'IMG_3550.webp' },
+            { name: 'ফুল কম্বো প্যাক', img: 'IMG_3554.webp' } // কম্বো প্যাকের সম্ভাবনা বেশি রাখার জন্য ২ বার দেওয়া হলো
+        ];
+
+        const fakeTimes = ['এইমাত্র', '১০ সেকেন্ড আগে', '১৫ সেকেন্ড আগে', '২২ সেকেন্ড আগে', '৩২ সেকেন্ড আগে', '১ মিনিট আগে', '২ মিনিট আগে', '৫ মিনিট আগে', 'কিছুক্ষণ আগে'];
+        
+        const fakeLocations = ['ঢাকা', 'চট্টগ্রাম', 'সিলেট', 'রাজশাহী', 'খুলনা', 'বরিশাল', 'রংপুর', 'কুমিল্লা', 'গাজীপুর', 'নারায়ণগঞ্জ', 'বগুড়া', 'ময়মনসিংহ', 'ব্রাহ্মণবাড়িয়া'];
+
+        let fakeSalesTimer;
+
+        function getRandomItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function triggerFakeSales() {
+            const notification = document.getElementById('sales-notification');
+            if (!notification) return;
+
+            // Generate Random Data
+            const randomName = getRandomItem(fakeNames);
+            const randomProduct = getRandomItem(fakeProducts);
+            const randomTime = getRandomItem(fakeTimes);
+            const randomLocation = getRandomItem(fakeLocations);
+
+            // Update DOM Elements
+            document.getElementById('notify-name').innerText = randomName;
+            document.getElementById('notify-product').innerText = randomProduct.name;
+            document.getElementById('notify-img').src = randomProduct.img;
+            document.getElementById('notify-time').innerText = randomTime;
+            document.getElementById('notify-location').innerText = randomLocation;
+
+            // Slide In (Show)
+            notification.classList.remove('translate-y-[200%]', 'opacity-0');
+            notification.classList.add('translate-y-0', 'opacity-100');
+
+            // Slide Out (Hide) after 5.5 seconds
+            setTimeout(() => {
+                closeNotification();
+            }, 5500);
+
+            // Schedule Next Popup randomly between 8 to 25 seconds
+            const nextTimeDelay = Math.floor(Math.random() * (25000 - 8000 + 1)) + 8000;
+            fakeSalesTimer = setTimeout(triggerFakeSales, nextTimeDelay);
+        }
+
+        function closeNotification() {
+            const notification = document.getElementById('sales-notification');
+            if(notification) {
+                notification.classList.remove('translate-y-0', 'opacity-100');
+                notification.classList.add('translate-y-[200%]', 'opacity-0');
+            }
+        }
+
+        // Start the fake sales loop after a slight delay (e.g., 3 seconds) on initial load
+        setTimeout(triggerFakeSales, 3000);
     </script>
 </body>
 </html>
